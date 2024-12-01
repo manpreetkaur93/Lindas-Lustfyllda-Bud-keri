@@ -1,23 +1,50 @@
-<!DOCTYPE html>
-<html lang="sv">
-<head>
-    <meta charset="UTF-8">
-    <title>Optimeringsresultat</title>
-</head>
-<body>
-    <h1>Optimeringsresultat</h1>
-    <p>Total förtjänst för dagens leveranser: {{ total_profit }}</p>
-    <p>Total straffavgift för paket kvar i lager: {{ total_penalty }}</p>
-    <p>Antal paket kvar i lager: {{ packages_left }}</p>
-    <p>Total förtjänst kvar i lager (exklusive straffavgift): {{ remaining_profit }}</p>
-    {% for vehicle in vehicles %}
-        <h2>{{ vehicle.name }} (Total vikt: {{ vehicle.total_weight }} kg)</h2>
-        <ul>
+{% extends "base.html" %}
+
+{% block title %}Optimeringsresultat - Lindas Budbilsoptimering{% endblock %}
+
+{% block content %}
+<h1>Optimeringsresultat</h1>
+
+<div class="card mb-4">
+  <div class="card-body">
+    <p><strong>Total förtjänst för dagens leveranser:</strong> {{ total_profit }}</p>
+    <p><strong>Total straffavgift för paket kvar i lager:</strong> {{ total_penalty }}</p>
+    <p><strong>Antal paket kvar i lager:</strong> {{ packages_left }}</p>
+    <p><strong>Total förtjänst kvar i lager (exklusive straffavgift):</strong> {{ remaining_profit }}</p>
+  </div>
+</div>
+
+{% for vehicle in vehicles %}
+  <div class="card mb-3">
+    <div class="card-header">
+      <h2>{{ vehicle.name }} (Total vikt: {{ vehicle.total_weight }} kg)</h2>
+    </div>
+    <div class="card-body">
+      {% if vehicle.packages %}
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Paket ID</th>
+              <th>Vikt (kg)</th>
+              <th>Förtjänst</th>
+            </tr>
+          </thead>
+          <tbody>
             {% for package in vehicle.packages %}
-                <li>Paket ID: {{ package['Paket_id'] }}, Vikt: {{ package['Vikt'] }} kg, Förtjänst: {{ package['Förtjänst'] }}</li>
+              <tr>
+                <td>{{ package['Paket_id'] }}</td>
+                <td>{{ package['Vikt'] }}</td>
+                <td>{{ package['Förtjänst'] }}</td>
+              </tr>
             {% endfor %}
-        </ul>
-    {% endfor %}
-    <p><a href="{{ url_for('index') }}">Tillbaka till startsidan</a></p>
-</body>
-</html>
+          </tbody>
+        </table>
+      {% else %}
+        <p>Inga paket tilldelade.</p>
+      {% endif %}
+    </div>
+  </div>
+{% endfor %}
+
+<p><a class="btn btn-primary" href="{{ url_for('index') }}">Tillbaka till startsidan</a></p>
+{% endblock %}

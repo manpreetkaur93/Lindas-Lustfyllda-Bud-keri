@@ -1,12 +1,38 @@
-<!DOCTYPE html>
-<html lang="sv">
-<head>
-    <meta charset="UTF-8">
-    <title>Budbilsoptimering</title>
-</head>
-<body>
-    <h1>Välkommen till Lindas Budbilsoptimering</h1>
-    <p><a href="{{ url_for('optimize') }}">Kör optimering</a></p>
-    <p><a href="{{ url_for('statistics') }}">Visa statistik</a></p>
-</body>
-</html>
+{% extends "base.html" %}
+
+{% block title %}Hem - Lindas Budbilsoptimering{% endblock %}
+
+{% block content %}
+<!-- Hero-sektion -->
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4">Välkommen till Lindas Budbilsoptimering</h1>
+    <p class="lead">Optimera dina leveranser och maximera din förtjänst.</p>
+    <hr class="my-4">
+    <p>Klicka på knappen nedan för att köra optimeringen eller visa statistik.</p>
+    <a class="btn btn-primary btn-lg" href="{{ url_for('optimize') }}" role="button">Kör optimering</a>
+    <a class="btn btn-secondary btn-lg" href="{{ url_for('statistics') }}" role="button">Visa statistik</a>
+  </div>
+</div>
+
+<!-- Innehållssektioner -->
+<div class="container">
+  <div class="row">
+    <div class="col-md-4">
+      <h2>Optimering</h2>
+      <p>Maximera din förtjänst genom att optimera leveranserna.</p>
+      <p><a class="btn btn-secondary" href="{{ url_for('optimize') }}" role="button">Kör optimering »</a></p>
+    </div>
+    <div class="col-md-4">
+      <h2>Statistik</h2>
+      <p>Analysera fördelningen av vikt och förtjänst för dina paket.</p>
+      <p><a class="btn btn-secondary" href="{{ url_for('statistics') }}" role="button">Visa statistik »</a></p>
+    </div>
+    <div class="col-md-4">
+      <h2>Kontakt</h2>
+      <p>Kontakta oss för mer information om våra tjänster.</p>
+      <p><a class="btn btn-secondary" href="#" role="button">Kontakta oss »</a></p>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,31 +1,75 @@
-<!DOCTYPE html>
-<html lang="sv">
-<head>
-    <meta charset="UTF-8">
-    <title>Statistik</title>
-</head>
-<body>
-    <h1>Statistik</h1>
-    <h2>Levererade paket</h2>
-    <p>Medelvikt: {{ stats.delivered_weight_mean }}</p>
-    <p>Viktvarians: {{ stats.delivered_weight_variance }}</p>
-    <p>Viktstandardavvikelse: {{ stats.delivered_weight_std }}</p>
-    <p>Medelförtjänst: {{ stats.delivered_profit_mean }}</p>
-    <p>Förtjänstvarians: {{ stats.delivered_profit_variance }}</p>
-    <p>Förtjänststandardavvikelse: {{ stats.delivered_profit_std }}</p>
+{% extends "base.html" %}
 
-    <h2>Paket kvar i lager</h2>
-    <p>Medelvikt: {{ stats.undelivered_weight_mean }}</p>
-    <p>Viktvarians: {{ stats.undelivered_weight_variance }}</p>
-    <p>Viktstandardavvikelse: {{ stats.undelivered_weight_std }}</p>
-    <p>Medelförtjänst: {{ stats.undelivered_profit_mean }}</p>
-    <p>Förtjänstvarians: {{ stats.undelivered_profit_variance }}</p>
-    <p>Förtjänststandardavvikelse: {{ stats.undelivered_profit_std }}</p>
+{% block title %}Statistik - Lindas Budbilsoptimering{% endblock %}
 
-    <h2>Histogram</h2>
-    <img src="{{ url_for('static', filename='weight_histogram.png') }}" alt="Vikthistogram">
-    <img src="{{ url_for('static', filename='profit_histogram.png') }}" alt="Förtjänsthistogram">
+{% block content %}
+<h1>Statistik</h1>
 
-    <p><a href="{{ url_for('index') }}">Tillbaka till startsidan</a></p>
-</body>
-</html>
+<h2>Levererade paket</h2>
+<table class="table table-bordered">
+  <tr>
+    <th>Medelvikt</th>
+    <td>{{ stats.delivered_weight_mean }}</td>
+  </tr>
+  <tr>
+    <th>Viktvarians</th>
+    <td>{{ stats.delivered_weight_variance }}</td>
+  </tr>
+  <tr>
+    <th>Viktstandardavvikelse</th>
+    <td>{{ stats.delivered_weight_std }}</td>
+  </tr>
+  <tr>
+    <th>Medelförtjänst</th>
+    <td>{{ stats.delivered_profit_mean }}</td>
+  </tr>
+  <tr>
+    <th>Förtjänstvarians</th>
+    <td>{{ stats.delivered_profit_variance }}</td>
+  </tr>
+  <tr>
+    <th>Förtjänststandardavvikelse</th>
+    <td>{{ stats.delivered_profit_std }}</td>
+  </tr>
+</table>
+
+<h2>Paket kvar i lager</h2>
+<table class="table table-bordered">
+  <tr>
+    <th>Medelvikt</th>
+    <td>{{ stats.undelivered_weight_mean }}</td>
+  </tr>
+  <tr>
+    <th>Viktvarians</th>
+    <td>{{ stats.undelivered_weight_variance }}</td>
+  </tr>
+  <tr>
+    <th>Viktstandardavvikelse</th>
+    <td>{{ stats.undelivered_weight_std }}</td>
+  </tr>
+  <tr>
+    <th>Medelförtjänst</th>
+    <td>{{ stats.undelivered_profit_mean }}</td>
+  </tr>
+  <tr>
+    <th>Förtjänstvarians</th>
+    <td>{{ stats.undelivered_profit_variance }}</td>
+  </tr>
+  <tr>
+    <th>Förtjänststandardavvikelse</th>
+    <td>{{ stats.undelivered_profit_std }}</td>
+  </tr>
+</table>
+
+<h2>Histogram</h2>
+<div class="row">
+  <div class="col-md-6">
+    <img src="{{ url_for('static', filename='weight_histogram.png') }}" alt="Vikthistogram" class="img-fluid">
+  </div>
+  <div class="col-md-6">
+    <img src="{{ url_for('static', filename='profit_histogram.png') }}" alt="Förtjänsthistogram" class="img-fluid">
+  </div>
+</div>
+
+<p><a class="btn btn-primary mt-3" href="{{ url_for('index') }}">Tillbaka till startsidan</a></p>
+{% endblock %}

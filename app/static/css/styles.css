@@ -1,0 +1,28 @@
+/* styles.css */
+
+/* Justera marginaler för att kompensera för fixed navbar */
+body {
+    padding-top: 70px;
+}
+
+/* Anpassa jumbotronen */
+.jumbotron {
+    background-color: #f8f9fa;
+    padding: 2rem 1rem;
+}
+
+/* Anpassa footer */
+.footer {
+    background-color: #f8f9fa;
+    padding: 1rem 0;
+}
+
+/* Anpassa kortens utseende */
+.card-header {
+    background-color: #007bff;
+    color: white;
+}
+
+.card {
+    border: 1px solid #007bff;
+}
