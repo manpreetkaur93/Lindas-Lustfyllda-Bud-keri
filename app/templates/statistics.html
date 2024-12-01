@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <title>Statistik</title>
+</head>
+<body>
+    <h1>Statistik</h1>
+    <h2>Levererade paket</h2>
+    <p>Medelvikt: {{ stats.delivered_weight_mean }}</p>
+    <p>Viktvarians: {{ stats.delivered_weight_variance }}</p>
+    <p>Viktstandardavvikelse: {{ stats.delivered_weight_std }}</p>
+    <p>Medelförtjänst: {{ stats.delivered_profit_mean }}</p>
+    <p>Förtjänstvarians: {{ stats.delivered_profit_variance }}</p>
+    <p>Förtjänststandardavvikelse: {{ stats.delivered_profit_std }}</p>
+
+    <h2>Paket kvar i lager</h2>
+    <p>Medelvikt: {{ stats.undelivered_weight_mean }}</p>
+    <p>Viktvarians: {{ stats.undelivered_weight_variance }}</p>
+    <p>Viktstandardavvikelse: {{ stats.undelivered_weight_std }}</p>
+    <p>Medelförtjänst: {{ stats.undelivered_profit_mean }}</p>
+    <p>Förtjänstvarians: {{ stats.undelivered_profit_variance }}</p>
+    <p>Förtjänststandardavvikelse: {{ stats.undelivered_profit_std }}</p>
+
+    <h2>Histogram</h2>
+    <img src="{{ url_for('static', filename='weight_histogram.png') }}" alt="Vikthistogram">
+    <img src="{{ url_for('static', filename='profit_histogram.png') }}" alt="Förtjänsthistogram">
+
+    <p><a href="{{ url_for('index') }}">Tillbaka till startsidan</a></p>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <title>Optimeringsresultat</title>
+</head>
+<body>
+    <h1>Optimeringsresultat</h1>
+    <p>Total förtjänst för dagens leveranser: {{ total_profit }}</p>
+    <p>Total straffavgift för paket kvar i lager: {{ total_penalty }}</p>
+    <p>Antal paket kvar i lager: {{ packages_left }}</p>
+    <p>Total förtjänst kvar i lager (exklusive straffavgift): {{ remaining_profit }}</p>
+    {% for vehicle in vehicles %}
+        <h2>{{ vehicle.name }} (Total vikt: {{ vehicle.total_weight }} kg)</h2>
+        <ul>
+            {% for package in vehicle.packages %}
+                <li>Paket ID: {{ package['Paket_id'] }}, Vikt: {{ package['Vikt'] }} kg, Förtjänst: {{ package['Förtjänst'] }}</li>
+            {% endfor %}
+        </ul>
+    {% endfor %}
+    <p><a href="{{ url_for('index') }}">Tillbaka till startsidan</a></p>
+</body>
+</html>
