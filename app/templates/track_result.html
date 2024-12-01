@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block title %}Spårningsresultat - Lindas Bud & Åkeri{% endblock %}
+
+{% block content %}
+<h1>Spårningsresultat för {{ tracking_id }}</h1>
+<p>Din leverans är på väg och beräknas anlända inom 2 dagar.</p>
+<p><a class="btn btn-primary" href="{{ url_for('track') }}">Spåra ett annat paket</a></p>
+{% endblock %}

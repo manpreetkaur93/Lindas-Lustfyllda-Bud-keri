@@ -1,21 +1,32 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-    <a class="navbar-brand" href="{{ url_for('index') }}">Lindas Budbilsoptimering</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" 
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Växla navigering">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item {% if request.endpoint == 'index' %}active{% endif %}">
-          <a class="nav-link" href="{{ url_for('index') }}">Hem</a>
-        </li>
-        <li class="nav-item {% if request.endpoint == 'optimize' %}active{% endif %}">
-          <a class="nav-link" href="{{ url_for('optimize') }}">Optimering</a>
-        </li>
-        <li class="nav-item {% if request.endpoint == 'statistics' %}active{% endif %}">
-          <a class="nav-link" href="{{ url_for('statistics') }}">Statistik</a>
-        </li>
-      </ul>
-    </div>
-  </nav>
-  
+  <a class="navbar-brand" href="{{ url_for('index') }}">
+    <img src="{{ url_for('static', filename='images/logo.png') }}" width="30" height="30" class="d-inline-block align-top" alt="Logotyp">
+    Lindas Bud & Åkeri
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" 
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Växla navigering">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item {% if request.endpoint == 'index' %}active{% endif %}">
+        <a class="nav-link" href="{{ url_for('index') }}">Hem</a>
+      </li>
+      <li class="nav-item {% if request.endpoint == 'optimize' %}active{% endif %}">
+        <a class="nav-link" href="{{ url_for('optimize') }}">Optimering</a>
+      </li>
+      <li class="nav-item {% if request.endpoint == 'statistics' %}active{% endif %}">
+        <a class="nav-link" href="{{ url_for('statistics') }}">Statistik</a>
+      </li>
+      <li class="nav-item {% if request.endpoint == 'track' %}active{% endif %}">
+        <a class="nav-link" href="{{ url_for('track') }}">Spåra Paket</a>
+      </li>
+      <li class="nav-item {% if request.endpoint == 'services' %}active{% endif %}">
+        <a class="nav-link" href="{{ url_for('services') }}">Tjänster</a>
+      </li>
+      <li class="nav-item {% if request.endpoint == 'contact' %}active{% endif %}">
+        <a class="nav-link" href="{{ url_for('contact') }}">Kontakt</a>
+      </li>
+    </ul>
+  </div>
+</nav>

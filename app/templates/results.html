@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}Optimeringsresultat - Lindas Budbilsoptimering{% endblock %}
+{% block title %}Optimeringsresultat - Lindas Bud & Åkeri{% endblock %}
 
 {% block content %}
 <h1>Optimeringsresultat</h1>
@@ -14,10 +14,11 @@
   </div>
 </div>
 
+<h2>Levererade Paket per Budbil</h2>
 {% for vehicle in vehicles %}
   <div class="card mb-3">
     <div class="card-header">
-      <h2>{{ vehicle.name }} (Total vikt: {{ vehicle.total_weight }} kg)</h2>
+      <h3>{{ vehicle.name }} (Total vikt: {{ vehicle.total_weight }} kg)</h3>
     </div>
     <div class="card-body">
       {% if vehicle.packages %}
@@ -27,6 +28,7 @@
               <th>Paket ID</th>
               <th>Vikt (kg)</th>
               <th>Förtjänst</th>
+              <th>Deadline</th>
             </tr>
           </thead>
           <tbody>
@@ -35,6 +37,7 @@
                 <td>{{ package['Paket_id'] }}</td>
                 <td>{{ package['Vikt'] }}</td>
                 <td>{{ package['Förtjänst'] }}</td>
+                <td>{{ package['Deadline'] }}</td>
               </tr>
             {% endfor %}
           </tbody>
@@ -45,6 +48,34 @@
     </div>
   </div>
 {% endfor %}
+
+<h2>Paket kvar i lager</h2>
+{% if undelivered_packages %}
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Paket ID</th>
+        <th>Vikt (kg)</th>
+        <th>Förtjänst</th>
+        <th>Deadline</th>
+        <th>Straffavgift</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for package in undelivered_packages %}
+        <tr>
+          <td>{{ package['Paket_id'] }}</td>
+          <td>{{ package['Vikt'] }}</td>
+          <td>{{ package['Förtjänst'] }}</td>
+          <td>{{ package['Deadline'] }}</td>
+          <td>{{ package['Straffavgift'] }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% else %}
+  <p>Inga paket kvar i lager.</p>
+{% endif %}
 
 <p><a class="btn btn-primary" href="{{ url_for('index') }}">Tillbaka till startsidan</a></p>
 {% endblock %}

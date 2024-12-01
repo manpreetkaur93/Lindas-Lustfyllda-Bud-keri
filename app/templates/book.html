@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}Boka Leverans - Lindas Bud & Åkeri{% endblock %}
+
+{% block content %}
+<h1>Boka en leverans</h1>
+<form method="post" action="{{ url_for('book') }}">
+  <div class="form-group">
+    <label for="sender">Avsändare</label>
+    <input type="text" class="form-control" id="sender" name="sender" placeholder="Ditt namn">
+  </div>
+  <div class="form-group">
+    <label for="receiver">Mottagare</label>
+    <input type="text" class="form-control" id="receiver" name="receiver" placeholder="Mottagarens namn">
+  </div>
+  <div class="form-group">
+    <label for="weight">Vikt (kg)</label>
+    <input type="number" class="form-control" id="weight" name="weight" placeholder="Paketets vikt">
+  </div>
+  <button type="submit" class="btn btn-primary">Boka</button>
+</form>
+{% endblock %}

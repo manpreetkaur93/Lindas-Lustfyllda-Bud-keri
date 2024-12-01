@@ -1,17 +1,17 @@
 {% extends "base.html" %}
 
-{% block title %}Hem - Lindas Budbilsoptimering{% endblock %}
+{% block title %}Hem - Lindas Bud & Åkeri{% endblock %}
 
 {% block content %}
 <!-- Hero-sektion -->
 <div class="jumbotron jumbotron-fluid">
   <div class="container">
-    <h1 class="display-4">Välkommen till Lindas Budbilsoptimering</h1>
-    <p class="lead">Optimera dina leveranser och maximera din förtjänst.</p>
+    <h1 class="display-4">Välkommen till Lindas Bud & Åkeri</h1>
+    <p class="lead">Snabb och pålitlig leverans över hela landet.</p>
     <hr class="my-4">
-    <p>Klicka på knappen nedan för att köra optimeringen eller visa statistik.</p>
-    <a class="btn btn-primary btn-lg" href="{{ url_for('optimize') }}" role="button">Kör optimering</a>
-    <a class="btn btn-secondary btn-lg" href="{{ url_for('statistics') }}" role="button">Visa statistik</a>
+    <p>Välj en av våra tjänster nedan för att komma igång.</p>
+    <a class="btn btn-primary btn-lg" href="{{ url_for('optimize') }}" role="button">Kör Optimering</a>
+    <a class="btn btn-secondary btn-lg" href="{{ url_for('statistics') }}" role="button">Visa Statistik</a>
   </div>
 </div>
 
@@ -21,17 +21,30 @@
     <div class="col-md-4">
       <h2>Optimering</h2>
       <p>Maximera din förtjänst genom att optimera leveranserna.</p>
-      <p><a class="btn btn-secondary" href="{{ url_for('optimize') }}" role="button">Kör optimering »</a></p>
+      <p><a class="btn btn-secondary" href="{{ url_for('optimize') }}" role="button">Kör Optimering »</a></p>
     </div>
     <div class="col-md-4">
       <h2>Statistik</h2>
       <p>Analysera fördelningen av vikt och förtjänst för dina paket.</p>
-      <p><a class="btn btn-secondary" href="{{ url_for('statistics') }}" role="button">Visa statistik »</a></p>
+      <p><a class="btn btn-secondary" href="{{ url_for('statistics') }}" role="button">Visa Statistik »</a></p>
     </div>
     <div class="col-md-4">
+      <h2>Spåra Paket</h2>
+      <p>Håll koll på ditt paket i realtid med vår spårningstjänst.</p>
+      <p><a class="btn btn-secondary" href="{{ url_for('track') }}" role="button">Spåra Paket »</a></p>
+    </div>
+  </div>
+
+  <div class="row mt-4">
+    <div class="col-md-6">
+      <h2>Våra Tjänster</h2>
+      <p>Läs mer om vad vi kan erbjuda dig.</p>
+      <p><a class="btn btn-secondary" href="{{ url_for('services') }}" role="button">Läs Mer »</a></p>
+    </div>
+    <div class="col-md-6">
       <h2>Kontakt</h2>
-      <p>Kontakta oss för mer information om våra tjänster.</p>
-      <p><a class="btn btn-secondary" href="#" role="button">Kontakta oss »</a></p>
+      <p>Behöver du hjälp? Kontakta vår kundtjänst.</p>
+      <p><a class="btn btn-secondary" href="{{ url_for('contact') }}" role="button">Kontakta Oss »</a></p>
     </div>
   </div>
 </div>

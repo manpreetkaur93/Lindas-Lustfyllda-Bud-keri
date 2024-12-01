@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}Spåra Paket - Lindas Bud & Åkeri{% endblock %}
+
+{% block content %}
+<h1>Spåra ditt paket</h1>
+<form method="post" action="{{ url_for('track') }}">
+  <div class="form-group">
+    <label for="tracking_id">Ange ditt spårningsnummer</label>
+    <input type="text" class="form-control" id="tracking_id" name="tracking_id" placeholder="Spårningsnummer">
+  </div>
+  <button type="submit" class="btn btn-primary">Spåra</button>
+</form>
+{% endblock %}
